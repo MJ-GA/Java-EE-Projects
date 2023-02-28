@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListWidgetSummer464Title}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListWidgetSummer464Empty}" rendered="#{widgetSummer464Controller.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{widgetSummer464Controller.items.rowCount > 0}">
+                    <h:outputText value="#{widgetSummer464Controller.pagination.pageFirstItem + 1}..#{widgetSummer464Controller.pagination.pageLastItem + 1}/#{widgetSummer464Controller.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{widgetSummer464Controller.previous}" value="#{bundle.Previous} #{widgetSummer464Controller.pagination.pageSize}" rendered="#{widgetSummer464Controller.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{widgetSummer464Controller.next}" value="#{bundle.Next} #{widgetSummer464Controller.pagination.pageSize}" rendered="#{widgetSummer464Controller.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{widgetSummer464Controller.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWidgetSummer464Title_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWidgetSummer464Title_nameS21joui}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nameS21joui}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWidgetSummer464Title_quantityS21joui}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantityS21joui}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{widgetSummer464Controller.prepareView}" value="#{bundle.ListWidgetSummer464ViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{widgetSummer464Controller.prepareEdit}" value="#{bundle.ListWidgetSummer464EditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{widgetSummer464Controller.destroy}" value="#{bundle.ListWidgetSummer464DestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{widgetSummer464Controller.prepareCreate}" value="#{bundle.ListWidgetSummer464CreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListWidgetSummer464IndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
