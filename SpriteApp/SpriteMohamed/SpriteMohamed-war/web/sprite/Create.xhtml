@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Purpose : Creates sprites on server side
+
+    @author : Mohamed Jouini
+    Student number 040994664
+
+-->
+
+
+
+
+Purpose : Creates sprites on server side
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSpriteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSpriteLabel_id}" for="id" />
+                 
+                    <h:outputLabel value="#{bundle.CreateSpriteLabel_xspeed}" for="xspeed" />
+                    <h:inputText id="xspeed" value="#{spriteController.selected.xspeed}" title="#{bundle.CreateSpriteTitle_xspeed}" />
+                    <h:outputLabel value="#{bundle.CreateSpriteLabel_xvalue}" for="xvalue" />
+                    <h:inputText id="xvalue" value="#{spriteController.selected.xvalue}" title="#{bundle.CreateSpriteTitle_xvalue}" />
+                    <h:outputLabel value="#{bundle.CreateSpriteLabel_yspeed}" for="yspeed" />
+                    <h:inputText id="yspeed" value="#{spriteController.selected.yspeed}" title="#{bundle.CreateSpriteTitle_yspeed}" />
+                    <h:outputLabel value="#{bundle.CreateSpriteLabel_yvalue}" for="yvalue" />
+                    <h:inputText id="yvalue" value="#{spriteController.selected.yvalue}" title="#{bundle.CreateSpriteTitle_yvalue}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{spriteController.create}" value="#{bundle.CreateSpriteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{spriteController.prepareList}" value="#{bundle.CreateSpriteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSpriteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Purpose : edits sprites on server side
+
+    @author : Mohamed Jouini
+    Student number 040994664
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSpriteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSpriteLabel_id}" for="id" />
+                   
+                    <h:outputLabel value="#{bundle.EditSpriteLabel_xspeed}" for="xspeed" />
+                    <h:inputText id="xspeed" value="#{spriteController.selected.xspeed}" title="#{bundle.EditSpriteTitle_xspeed}" />
+                    <h:outputLabel value="#{bundle.EditSpriteLabel_xvalue}" for="xvalue" />
+                    <h:inputText id="xvalue" value="#{spriteController.selected.xvalue}" title="#{bundle.EditSpriteTitle_xvalue}" />
+                    <h:outputLabel value="#{bundle.EditSpriteLabel_yspeed}" for="yspeed" />
+                    <h:inputText id="yspeed" value="#{spriteController.selected.yspeed}" title="#{bundle.EditSpriteTitle_yspeed}" />
+                    <h:outputLabel value="#{bundle.EditSpriteLabel_yvalue}" for="yvalue" />
+                    <h:inputText id="yvalue" value="#{spriteController.selected.yvalue}" title="#{bundle.EditSpriteTitle_yvalue}" />
+                </h:panelGrid>
+                <h:commandLink action="#{spriteController.update}" value="#{bundle.EditSpriteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSpriteViewLink}"/>
+                <br />
+                <h:commandLink action="#{spriteController.prepareList}" value="#{bundle.EditSpriteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSpriteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

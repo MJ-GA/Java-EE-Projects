@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Purpose : Allows to view all the sprites in the server
+
+    @author : Mohamed Jouini
+    Student number 040994664
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSpriteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                  
+                    <h:outputText value="#{bundle.ViewSpriteLabel_xspeed}"/>
+                    <h:outputText value="#{spriteController.selected.xspeed}" title="#{bundle.ViewSpriteTitle_xspeed}"/>
+                    <h:outputText value="#{bundle.ViewSpriteLabel_xvalue}"/>
+                    <h:outputText value="#{spriteController.selected.xvalue}" title="#{bundle.ViewSpriteTitle_xvalue}"/>
+                    <h:outputText value="#{bundle.ViewSpriteLabel_yspeed}"/>
+                    <h:outputText value="#{spriteController.selected.yspeed}" title="#{bundle.ViewSpriteTitle_yspeed}"/>
+                    <h:outputText value="#{bundle.ViewSpriteLabel_yvalue}"/>
+                    <h:outputText value="#{spriteController.selected.yvalue}" title="#{bundle.ViewSpriteTitle_yvalue}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{spriteController.destroyAndView}" value="#{bundle.ViewSpriteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSpriteEditLink}"/>
+                <br />
+                <h:commandLink action="#{spriteController.prepareCreate}" value="#{bundle.ViewSpriteCreateLink}" />
+                <br />
+                <h:commandLink action="#{spriteController.prepareList}" value="#{bundle.ViewSpriteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSpriteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
